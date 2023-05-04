@@ -88,25 +88,25 @@ const Auth = () => {
   return (
     <div className="h-screen bg-gradient-to-r from-sky-500 to-indigo-500 flex justify-center items-center">
       <div
-        className="flex flex-col justify-center items-center bg-black m-5 p-8 rounded-lg  overflow-y-auto"
+        className="flex flex-col justify-center items-center bg-black m-5 pb-8 rounded-lg scrollbar-hide overflow-y-scroll"
         style={{ maxHeight: "90vh" }}
       >
-        <h1 className="mt-8 pt-4 text-center text-3xl font-bold">
+        <h1 className="mt-8 pb-4 text-center text-3xl font-bold text-green-500 uppercase">
           {showRegister ? "Register" : "Login"}
         </h1>
-        <h2 className="min-w-[350px] text-center">
+        <h2 className="min-w-[450px] text-slate-400 capitalize text-center">
           {showRegister
             ? "please enter user detail"
             : "please enter your email & password"}
         </h2>
-        <form className=" flex flex-col space-y-6">
+        <form className=" flex flex-col space-y-4">
           <input
             name="username"
             type="text"
             placeholder="username"
             value={username}
             onChange={handleChange}
-            className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
+            className="border min-w-[350px] rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
           />
           {showRegister && (
             <>
@@ -177,27 +177,27 @@ const Auth = () => {
           )}
           <h4>
             {!showRegister ? (
-              <>
-                <p className="text-sm">don't have an account?</p>
+              <div className="flex flex-wrap gap-2">
+                don't have an account?
                 <p
-                  className="text-white font-semibold px-4"
+                  className=" text-sky-500 font-semibold"
                   style={{ cursor: "pointer" }}
                   onClick={() => setshowRegister(true)}
                 >
                   signup
                 </p>
-              </>
+              </div>
             ) : (
-              <>
+              <div className="flex flex-wrap gap-2">
                 have an account?
                 <p
-                  className="text-white font-semibold px-4"
+                  className="text-sky-500 font-semibold"
                   style={{ cursor: "pointer" }}
                   onClick={() => setshowRegister(false)}
                 >
                   login
                 </p>
-              </>
+              </div>
             )}
           </h4>
         </form>

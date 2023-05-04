@@ -1,6 +1,7 @@
 export default interface User  {
-    username: string,
+    data:{username: string,
     first_name: string,
     last_name: string,
-    email: string
+    email: string}
+    id:number
 }

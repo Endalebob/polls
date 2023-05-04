@@ -1,4 +1,4 @@
-import { RootState, store } from "<@>/app/store";
+import Login from "<@>/types/login";
 import Registration from "<@>/types/registration";
 import User from "<@>/types/user";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
@@ -11,10 +11,11 @@ export const authApiSlice = createApi({
   endpoints(builder) {
     return {
       loginUser: builder.mutation({
-        query: (body: { username: string; password: string }) => {
+        query: (body: Login) => {
           return { url: "/account/login/", method: "POST", body };
         },
       }),
+
       registerUser:builder.mutation({
         query:(body:Registration) => {
             return {
@@ -24,6 +25,7 @@ export const authApiSlice = createApi({
             }
         }
       }),
+
       logoutUser: builder.mutation({
         query: () => {
           return {
@@ -32,6 +34,7 @@ export const authApiSlice = createApi({
           };
         },
       }),
+      
       getUser: builder.query<User, string>({
         query: (token) => ({
           headers: {
