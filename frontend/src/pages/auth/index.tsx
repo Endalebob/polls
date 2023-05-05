@@ -1,4 +1,5 @@
 import {
+  useGetUserapiQuery,
   useLoginUserMutation,
   useRegisterUserMutation,
 } from "<@>/services/authApi";
@@ -51,8 +52,10 @@ const Auth = () => {
       dispatch(setUsers({ token: loginData.token }));
       router.push("/user");
     }
-  }, [isLoginSuccess]);
+  }, [loginData]);
 
+
+  
   const [
     registerUser,
     {
@@ -62,6 +65,8 @@ const Auth = () => {
       error: registerError,
     },
   ] = useRegisterUserMutation();
+
+
 
   const handleRegister = async () => {
     if (username && password && email && password2 && last_name && first_name) {
@@ -77,6 +82,9 @@ const Auth = () => {
       toast.error("please fill all input field");
     }
   };
+
+
+
   useEffect(() => {
     if (isRegisterSuccess) {
       toast.success("Registration successeful!");
@@ -127,17 +135,16 @@ const Auth = () => {
                 className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
               />
               <input
-            name="email"
-            type="text"
-            placeholder="email"
-            value={email}
-            onChange={handleChange}
-            className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
-          />
+                name="email"
+                type="text"
+                placeholder="email"
+                value={email}
+                onChange={handleChange}
+                className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
+              />
             </>
           )}
 
-          
           <input
             name="password"
             type="password"
